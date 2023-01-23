@@ -1,4 +1,152 @@
 <!-- https://dummy.restapiexample.com/api/v1/employees -->
 <!-- {"id":1,"employee_name":"Tiger Nixon","employee_salary":320800,"employee_age":61,"profile_image":""} -->
-<router-outlet></router-outlet>
-<h1 class="text-center">testing</h1>
+<section class="header bg-dark">
+  <div class="container-fluid">
+    <div class="row">
+      <app-header></app-header>
+    </div>
+  </div>
+</section>
+<!-- Main content -->
+<section class="toolbar container-fluid py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Add Employee
+        </button>
+      </div>
+      <div class="col">
+        <input class="form-control rounded p-2" placeholder="Search Employees" type="search" name="" id="">
+
+      </div>
+    </div>
+  </div>
+</section>
+<section class="Employee p-3">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col justify-content-center border border-dark rounded p-3">
+        <span class="text-secondary fs-2 fw-bold fst-italic ">There are no Employees !</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Enter Employee Information</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="employeeForm">
+          <div class="row">
+            <h6 class="text-secondary fts-italic">Personal Information</h6>
+            <hr class="">
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-2">
+              <div class="form-outline">
+                <input type="text" id="firstName" class="form-control form-control" formControlName="firstName" />
+                <label class="form-label" for="firstName">First Name</label>
+              </div>
+            </div>
+            <div class="col-md-6 mb-2">
+
+              <div class="form-outline">
+                <input type="text" id="lastName" class="form-control form-control" formControlName="lastName" />
+                <label class="form-label" for="lastName">Last Name</label>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-2 d-flex align-items-center">
+
+              <div class="form-outline datepicker w-100">
+                <label for="datepicker" class="form-label">Birthdate</label>
+                <input type="date" name="" id="datepicker" class="form-control" formControlName="birthdate">
+              </div>
+
+            </div>
+            <div class="col-md-6 mb-2">
+              <select class="w-10 select form-control form-select">
+                <option value="default">Choose option</option>
+                <option *ngFor=" let option of educationOptions; let i = index" value="{{i}}" formControlName="education">
+                  {{ option | titlecase }}
+                </option >
+
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-2 pb-2">
+              <div class="form-outline">
+                <input type="email" id="emailAddress" class="form-control form-control" />
+                <label class="form-label" for="emailAddress" formControlName="email">Email</label>
+              </div>
+            </div>
+            <div class="col-md-6 mb-2 pb-2">
+              <div class="form-outline">
+                <input type="tel" id="phoneNumber" class="form-control form-control" />
+                <label class="form-label" for="phoneNumber" formControlName="phone">Phone Number</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h6 class="mb-2 pb-1">Gender: </h6>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender" value="option1" formControlName="gender" checked />
+                <label class="form-check-label" for="femaleGender">Female</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
+                  value="option2" formControlName="gender" />
+                <label class="form-check-label" for="maleGender">Male</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
+                  value="option3" formControlName="gender" />
+                <label class="form-check-label" for="otherGender">Other</label>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <h6 class="text-secondary fts-italic">Job Information</h6>
+            <hr class="">
+          </div>
+          <div class="row mt-3">
+            <div class="col-6">
+              <input type="text" name="" id="form-control" class="form-control" placeholder="Company Name" formControlName="company">
+            </div>
+            <div class="col-6">
+              <input type="number" name="" id="form-control" class="form-control" placeholder="Job Experiance (yrs)" formControlName="jobexperience">
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <input type="number" name="" id="form-control" class="form-control" placeholder="Salary ( LPA )" formControlName="salary">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Insert</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <router-outlet></router-outlet> -->
+<!-- <h1 class="text-center">testing</h1> -->
+<!-- https://www.mockaroo.com/apis/new?schema=487064 -->
