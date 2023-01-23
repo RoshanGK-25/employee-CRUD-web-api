@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { emp } from './Models/emp.model';
+import { EmployeeService } from './serices/employee.service';
 
 
 @Component({
@@ -17,23 +20,27 @@ export class AppComponent implements OnInit , AfterViewInit{
     'Post Graduate',
     'Phd'
   ];
-  employeeForm: any;
+  employeeForm: FormGroup;
+  employees:emp[];
+  employeesToDisplay : emp[];
 
-  constructor( private fb : FormBuilder ){
-
+  constructor( private fb : FormBuilder, private http : HttpClient, private emp : EmployeeService ){
+    this.employeeForm = fb.group({});
+    this.employees = []
+    this.employeesToDisplay = this.employees;
   }
   ngOnInit():void{
     this.employeeForm = this.fb.group({
-      firstName: this.fb.control('firstName'),
-      lastName: this.fb.control('lastName'),
-      email: this.fb.control('email'),
-      phone: this.fb.control('phone'),
-      birthdate: this.fb.control('birthday'),
-      gender: this.fb.control('gender'),
-      education: this.fb.control('education'),
-      company: this.fb.control('company'),
-      jobexperience: this.fb.control('jobexperience'),
-      salary: this.fb.control('salary'),
+      firstName: this.fb.control(''),
+      lastName: this.fb.control(''),
+      email: this.fb.control(''),
+      phone: this.fb.control(''),
+      birthdate: this.fb.control(''),
+      gender: this.fb.control(''),
+      education: this.fb.control(''),
+      company: this.fb.control(''),
+      jobExperience: this.fb.control(''),
+      salary: this.fb.control(''),
     });
   }
   ngAfterViewInit(): void {
