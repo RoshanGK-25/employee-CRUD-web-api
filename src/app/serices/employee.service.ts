@@ -6,8 +6,8 @@ import { emp } from '../Models/emp.model';
   providedIn: 'root'
 })
 export class EmployeeService {
-  baseUrl = 'https://my.api.mockaroo.com/emp.json';
-  db = 'emp.json';
+  baseUrl = 'https://my.api.mockaroo.com/';
+  db = 'employee.json';
   key = '?key=2e43f6d0';
   constructor(private http : HttpClient) { }
 
@@ -18,7 +18,7 @@ export class EmployeeService {
     return this.http.post<emp>(this.baseUrl + this.db + this.key + '&_method=POST', employee);
   }
   deleteEmployee(id : string){
-    return this.http.delete<emp>(this.baseUrl + this.db + this.key + '&_method=DELETE' + id);
+    return this.http.delete<emp>(this.baseUrl + this.db + this.key + '&_method=DELETE/' + id);
   }
   putEmployee(id : string, employee : emp){
     return this.http.put<emp>(this.baseUrl + this.db + this.key + '&_method=PUT' +id, employee);
